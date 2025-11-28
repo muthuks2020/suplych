@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Optimization Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Inventory Optimization Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-warehouse"></i></div>
+            <div class="agent-details">
+                <h1>Inventory Optimization Agent</h1>
+                <p>AI-driven inventory management across 44 warehouses. Optimizes stock levels, predicts stockouts, and frees working capital while maintaining service levels.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge savings"><i class="fas fa-rupee-sign"></i> ₹18.5Cr Savings Potential</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Inventory Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered inventory optimization</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-search"></i></div><span class="step-label">Stock Analysis</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-shield-alt"></i></div><span class="step-label">Safety Stock</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-bell"></i></div><span class="step-label">Reorder Points</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-exchange-alt"></i></div><span class="step-label">Transfer Plan</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-check-circle"></i></div><span class="step-label">Optimization</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricReduction">--</div><div class="metric-label">Inventory Reduction</div><div class="metric-change">Without stockouts</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricCapital">--</div><div class="metric-label">Working Capital Freed</div><div class="metric-change">Available for growth</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricFillRate">--</div><div class="metric-label">Fill Rate Achieved</div><div class="metric-change">↑ from 82%</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricAlerts">--</div><div class="metric-label">Stockout Alerts</div><div class="metric-change">Prevented this week</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-bar"></i> Inventory Health by Warehouse</h3><div class="chart-container"><canvas id="inventoryChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-exclamation-triangle"></i> Critical Alerts</h3>
+                    <div style="padding: 1rem;">
+                        <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-bottom: 0.75rem; border-left: 4px solid #ff9900;">
+                            <strong>SKU001 - Delhi:</strong> 2 days of stock remaining<br><small style="color: #666;">Recommended: Transfer 150 units from Mumbai</small>
+                        </div>
+                        <div style="background: #fff3cd; padding: 1rem; border-radius: 8px; margin-bottom: 0.75rem; border-left: 4px solid #ff9900;">
+                            <strong>SKU006 - Delhi:</strong> 3 days of stock remaining<br><small style="color: #666;">Recommended: Urgent reorder - 200 units</small>
+                        </div>
+                        <div style="background: #d4edda; padding: 1rem; border-radius: 8px; border-left: 4px solid #28a745;">
+                            <strong>28 SKUs:</strong> Overstock identified<br><small style="color: #666;">Recommended: Markdown strategy to free ₹4.2Cr</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-truck"></i></div><div class="insight-title">Inter-Warehouse Transfer</div></div><div class="insight-value">Save ₹8.5L</div><div class="insight-desc">Move 150 units of SKU001 from Mumbai to Delhi</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-shopping-cart"></i></div><div class="insight-title">Urgent Reorder</div></div><div class="insight-value">+₹12Cr</div><div class="insight-desc">Place PO for ethnic wear - wedding season surge</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-percentage"></i></div><div class="insight-title">Clear Slow Movers</div></div><div class="insight-value">Free ₹4.2Cr</div><div class="insight-desc">28 SKUs with >90 days inventory need markdown</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/inventory-optimization-agent.js"></script>
+</body>
+</html>

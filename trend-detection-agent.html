@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trend Detection Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .agent-icon-large { background: linear-gradient(135deg, #ff9900, #dc3545) !important; }
+        .trend-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .trend-card { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); position: relative; }
+        .trend-card.hot::before { content: '🔥 HOT'; position: absolute; top: 0.75rem; right: 0.75rem; background: linear-gradient(135deg, #dc3545, #ff9900); color: white; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700; }
+        .trend-card.rising::before { content: '📈 RISING'; position: absolute; top: 0.75rem; right: 0.75rem; background: linear-gradient(135deg, #28a745, #1e7e34); color: white; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700; }
+        .trend-name { font-weight: 700; color: #146eb4; margin-bottom: 0.3rem; }
+        .trend-growth { font-size: 1.8rem; font-weight: 800; color: #28a745; }
+        .trend-desc { font-size: 0.85rem; color: #666; margin: 0.5rem 0; }
+        @media (max-width: 1024px) { .trend-cards { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Fashion Trend Detection Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-fire"></i></div>
+            <div class="agent-details">
+                <h1>Fashion Trend Detection Agent</h1>
+                <p>Real-time monitoring of social media, runway shows, celebrity fashion, and search trends to identify emerging fashion trends 3-6 weeks before they peak.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge accuracy"><i class="fas fa-bullseye"></i> 89% Hit Rate</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Sales Velocity Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered trend detection</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-hashtag"></i></div><span class="step-label">Social Listening</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-chart-line"></i></div><span class="step-label">Trend Analysis</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-brain"></i></div><span class="step-label">Pattern Recognition</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-tachometer-alt"></i></div><span class="step-label">Velocity Scoring</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><span class="step-label">Recommendations</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricHitRate">--</div><div class="metric-label">Trend Hit Rate</div><div class="metric-change">Prediction accuracy</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricDetection">--</div><div class="metric-label">Early Detection</div><div class="metric-change">Before peak demand</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricTrends">--</div><div class="metric-label">Active Trends</div><div class="metric-change">Currently tracking</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricRevenue">--</div><div class="metric-label">Revenue Captured</div><div class="metric-change">From early stocking</div></div>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; color: #146eb4;"><i class="fas fa-fire" style="color: #ff9900;"></i> Detected Trends</h3>
+            <div class="trend-cards">
+                <div class="trend-card hot"><div class="trend-name">Wedding Season Ethnic</div><div class="trend-growth">+67%</div><div class="trend-desc">Banarasi sarees & heavy lehengas surging</div></div>
+                <div class="trend-card hot"><div class="trend-name">Quiet Luxury</div><div class="trend-growth">+52%</div><div class="trend-desc">Minimalist, logo-free premium fashion</div></div>
+                <div class="trend-card rising"><div class="trend-name">Sustainable Fashion</div><div class="trend-growth">+38%</div><div class="trend-desc">Eco-friendly fabrics and handloom</div></div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-line"></i> Trend Velocity Chart</h3><div class="chart-container"><canvas id="velocityChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-hashtag"></i> Social Signal Sources</h3>
+                    <div style="padding: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem;">
+                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #f09433, #dc2743, #bc1888); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;"><i class="fab fa-instagram"></i></div>
+                            <div><strong>#WeddingSeason2025</strong><br><small style="color: #28a745;">↑ 234% engagement</small></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 0.5rem;">
+                            <div style="width: 40px; height: 40px; background: #e60023; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;"><i class="fab fa-pinterest"></i></div>
+                            <div><strong>#IndianBridal</strong><br><small style="color: #28a745;">↑ 189% saves</small></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 8px;">
+                            <div style="width: 40px; height: 40px; background: #1da1f2; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;"><i class="fab fa-twitter"></i></div>
+                            <div><strong>#SustainableFashion</strong><br><small style="color: #28a745;">↑ 156% mentions</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-box"></i></div><div class="insight-title">Increase Ethnic Inventory</div></div><div class="insight-value">+₹4.2Cr</div><div class="insight-desc">Stock up 4 weeks before wedding peak</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-tags"></i></div><div class="insight-title">Launch Quiet Luxury Edit</div></div><div class="insight-value">+₹2.8Cr</div><div class="insight-desc">Premium minimalist collection for metros</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-shoe-prints"></i></div><div class="insight-title">Platform Sneaker Push</div></div><div class="insight-value">+₹1.5Cr</div><div class="insight-desc">Partner for exclusive chunky sneaker drops</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/trend-detection-agent.js"></script>
+</body>
+</html>

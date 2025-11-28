@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShellKode AI - Multi-Agent Orchestration Demo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-blue: #4daae8;
+            --dark-blue: #146eb4;
+            --light-gray: #f2f2f2;
+            --white: #ffffff;
+            --dark-text: #2d2d2d;
+            --success-green: #28a745;
+            --warning-orange: #ff9900;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary-blue));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(20, 110, 180, 0.3);
+        }
+
+        .logo-img {
+            width: 126px;
+            height: auto;
+            display: block;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .header-center { text-align: center; }
+        .header-center h1 { font-size: 1.6rem; }
+        .header-center p { opacity: 0.9; }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover { background: rgba(255,255,255,0.3); }
+
+        .container { max-width: 1600px; margin: 0 auto; padding: 1.5rem; }
+
+        .upload-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 2px dashed var(--primary-blue);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            border-color: var(--dark-blue);
+            box-shadow: 0 20px 60px rgba(77,170,232,0.2);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            animation: uploadFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes uploadFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .upload-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .upload-desc { color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+
+        .file-input { display: none; }
+
+        .file-input-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(77,170,232,0.3);
+        }
+
+        .file-input-label:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(77,170,232,0.4);
+        }
+
+        .file-info {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(40,167,69,0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(40,167,69,0.3);
+        }
+
+        .file-info.show { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .activate-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--success-green), #1e7e34);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(40,167,69,0.3);
+        }
+
+        .activate-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(40,167,69,0.4);
+        }
+
+        .activate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .data-preview {
+            display: none;
+            margin-top: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .data-preview.show { display: block; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .orchestration-section {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .orchestration-section.show { display: block; animation: fadeIn 0.8s ease; }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i { color: var(--primary-blue); }
+
+        .agent-network {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .network-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .agent-status-text { font-size: 1.1rem; color: var(--success-green); }
+
+        .agents-ring {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            min-height: 300px;
+        }
+
+        .central-hub {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 0 60px rgba(77,170,232,0.5);
+            animation: hubPulse 3s infinite;
+        }
+
+        @keyframes hubPulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(77,170,232,0.5); }
+            50% { box-shadow: 0 0 100px rgba(77,170,232,0.8); }
+        }
+
+        .central-hub i { font-size: 2rem; margin-bottom: 0.3rem; }
+        .central-hub span { font-size: 0.75rem; text-align: center; }
+
+        .agent-node {
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+            border: 3px solid transparent;
+        }
+
+        .agent-node i { font-size: 1.5rem; margin-bottom: 0.3rem; }
+        .agent-node span { font-size: 0.65rem; text-align: center; }
+
+        .agent-node.activating {
+            border-color: var(--warning-orange);
+            animation: agentActivating 1s infinite;
+        }
+
+        @keyframes agentActivating {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(255,153,0,0.3); }
+            50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(255,153,0,0.6); }
+        }
+
+        .agent-node.active {
+            border-color: var(--success-green);
+            background: rgba(40,167,69,0.2);
+            box-shadow: 0 0 30px rgba(40,167,69,0.4);
+        }
+
+        .agent-node.communicating { animation: agentCommunicating 0.5s ease; }
+
+        @keyframes agentCommunicating {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); box-shadow: 0 0 50px var(--primary-blue); }
+            100% { transform: scale(1); }
+        }
+
+        .live-feed-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .live-feed {
+            background: rgba(0,0,0,0.4);
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feed-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feed-header i { color: var(--primary-blue); }
+
+        .feed-content {
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .feed-content::-webkit-scrollbar { width: 6px; }
+        .feed-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 3px; }
+        .feed-content::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 3px; }
+
+        .feed-message {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            animation: messageFade 0.3s ease;
+        }
+
+        @keyframes messageFade {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timestamp { color: rgba(255,255,255,0.4); margin-right: 0.5rem; }
+
+        .agent-tag {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+        }
+
+        .agent-comm-panel {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .comm-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comm-header i { color: var(--warning-orange); }
+
+        .comm-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+        }
+
+        .comm-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            animation: commSlide 0.5s ease;
+        }
+
+        @keyframes commSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comm-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .comm-content { flex: 1; }
+
+        .comm-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comm-title .arrow { color: var(--success-green); }
+        .comm-body { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+
+        .comm-data {
+            margin-top: 0.5rem;
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--success-green);
+        }
+
+        .metrics-section {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .metrics-section.show { display: block; animation: fadeIn 0.8s ease; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-top: 3px solid var(--primary-blue);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .metric-label { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .metric-change { font-size: 0.85rem; color: var(--success-green); margin-top: 0.5rem; }
+
+        .results-section { display: none; margin-bottom: 2rem; }
+        .results-section.show { display: block; animation: fadeIn 0.8s ease; }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .result-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .chart-container { height: 200px; margin-top: 1rem; }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .insight-card {
+            background: rgba(77,170,232,0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .insight-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .insight-title i { color: var(--warning-orange); }
+        .insight-value { font-size: 1.8rem; font-weight: 700; color: var(--success-green); }
+        .insight-desc { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+        @media (max-width: 1200px) {
+            .live-feed-section { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .results-grid { grid-template-columns: 1fr; }
+            .insights-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="shellkode.png" alt="ShellKode" class="logo-img">
+        <div class="header-center">
+            <h1>🧠 Multi-Agent Orchestration Demo</h1>
+            <p>Watch 8 AI Agents collaborate in real-time</p>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <span class="nav-btn" id="agentStatus"><i class="fas fa-circle" style="color: #fbbf24;"></i> Awaiting Data</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Fashion E-Commerce Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate the Multi-Agent AI Network</p>
+            
+            <input type="file" class="file-input" id="csvFile" accept=".csv" onchange="handleFileSelect(event)">
+            <label for="csvFile" class="file-input-label">
+                <i class="fas fa-file-csv"></i> Select Fashion Dataset (CSV)
+            </label>
+
+            <div class="file-info" id="fileInfo">
+                <p><i class="fas fa-check-circle" style="color: var(--success-green);"></i> <strong id="fileName"></strong></p>
+                <p style="color: rgba(255,255,255,0.7);">Size: <span id="fileSize"></span> | Ready for processing</p>
+            </div>
+
+            <div class="data-preview" id="dataPreview">
+                <h4 style="margin-bottom: 1rem;"><i class="fas fa-table"></i> Data Preview</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Date</th><th>Warehouse</th><th>Category</th><th>Product</th><th>Brand</th><th>Units</th><th>Revenue</th><th>Inventory</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2025-01-01</td><td>Mumbai_Central</td><td>Women_Ethnic</td><td>Silk Saree</td><td>Fabindia</td><td>145</td><td>₹10.15L</td><td>234</td></tr>
+                        <tr><td>2025-01-01</td><td>Delhi_Gurgaon</td><td>Women_Western</td><td>Maxi Dress</td><td>ONLY</td><td>89</td><td>₹1.33L</td><td>156</td></tr>
+                        <tr><td>2025-01-01</td><td>Bangalore</td><td>Accessories</td><td>Tote Bag</td><td>Hidesign</td><td>56</td><td>₹2.80L</td><td>78</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="activate-btn" id="activateBtn" onclick="activateAgents()" disabled>
+                <i class="fas fa-rocket"></i> Activate Multi-Agent Network
+            </button>
+        </div>
+
+        <div class="orchestration-section" id="orchestrationSection">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Agent Network Orchestration</h2>
+            
+            <div class="agent-network">
+                <div class="network-header">
+                    <h3><i class="fas fa-network-wired"></i> Agent Topology</h3>
+                    <span class="agent-status-text" id="networkStatus">Initializing network...</span>
+                </div>
+
+                <div class="agents-ring">
+                    <div class="central-hub"><i class="fas fa-brain"></i><span>Orchestrator</span></div>
+                    <div class="agent-node" id="agent1" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);"><i class="fas fa-chart-line"></i><span>Demand<br>Forecast</span></div>
+                    <div class="agent-node" id="agent2" style="position: absolute; top: 60px; right: 80px;"><i class="fas fa-warehouse"></i><span>Inventory<br>Optimizer</span></div>
+                    <div class="agent-node" id="agent3" style="position: absolute; top: 180px; right: 30px;"><i class="fas fa-fire"></i><span>Trend<br>Detection</span></div>
+                    <div class="agent-node" id="agent4" style="position: absolute; bottom: 60px; right: 80px;"><i class="fas fa-undo-alt"></i><span>Return<br>Prediction</span></div>
+                    <div class="agent-node" id="agent5" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);"><i class="fas fa-tags"></i><span>Promotion<br>Planning</span></div>
+                    <div class="agent-node" id="agent6" style="position: absolute; bottom: 60px; left: 80px;"><i class="fas fa-users"></i><span>Customer<br>Intel</span></div>
+                    <div class="agent-node" id="agent7" style="position: absolute; top: 180px; left: 30px;"><i class="fas fa-network-wired"></i><span>Multi-<br>Warehouse</span></div>
+                    <div class="agent-node" id="agent8" style="position: absolute; top: 60px; left: 80px;"><i class="fas fa-crown"></i><span>Brand<br>Analytics</span></div>
+                </div>
+            </div>
+
+            <div class="live-feed-section">
+                <div class="live-feed">
+                    <div class="feed-header"><i class="fas fa-terminal"></i><h3>Agent Processing Log</h3></div>
+                    <div class="feed-content" id="processingFeed"></div>
+                </div>
+                <div class="agent-comm-panel">
+                    <div class="comm-header"><i class="fas fa-exchange-alt"></i><h3>Agent-to-Agent Communication</h3></div>
+                    <div class="comm-visual" id="commVisual"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics-section" id="metricsSection">
+            <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Real-time Analytics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="forecastAccuracy">--</div>
+                    <div class="metric-label">Forecast Accuracy</div>
+                    <div class="metric-change">↑ vs manual forecasting</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="inventoryReduction">--</div>
+                    <div class="metric-label">Inventory Optimization</div>
+                    <div class="metric-change">Capital freed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="returnPrediction">--</div>
+                    <div class="metric-label">Return Prediction</div>
+                    <div class="metric-change">Accuracy rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="revenueImpact">--</div>
+                    <div class="metric-label">Revenue Impact</div>
+                    <div class="metric-change">Monthly projection</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Multi-Agent Intelligence Output</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-icon"><i class="fas fa-chart-area"></i></div>
+                        <div><h3>Demand Forecast by Category</h3><p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">AI-generated 30-day projection</p></div>
+                    </div>
+                    <div class="chart-container"><canvas id="demandChart"></canvas></div>
+                </div>
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-icon"><i class="fas fa-warehouse"></i></div>
+                        <div><h3>Inventory Health by Warehouse</h3><p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Cross-warehouse optimization</p></div>
+                    </div>
+                    <div class="chart-container"><canvas id="inventoryChart"></canvas></div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-title"><i class="fas fa-lightbulb"></i> Trend Alert</div>
+                    <div class="insight-value">+67%</div>
+                    <div class="insight-desc">Ethnic wear demand surge predicted for upcoming wedding season</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title"><i class="fas fa-exclamation-triangle"></i> Stockout Risk</div>
+                    <div class="insight-value">12 SKUs</div>
+                    <div class="insight-desc">High-velocity items need immediate replenishment at Delhi warehouse</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title"><i class="fas fa-trophy"></i> Top Performer</div>
+                    <div class="insight-value">Fabindia</div>
+                    <div class="insight-desc">Brand showing 34% higher conversion rate this quarter</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentAgent = 0;
+        const agentNames = ['Demand Forecast', 'Inventory Optimizer', 'Trend Detection', 'Return Prediction', 'Promotion Planning', 'Customer Intel', 'Multi-Warehouse', 'Brand Analytics'];
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file && file.name.endsWith('.csv')) {
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('fileSize').textContent = formatFileSize(file.size);
+                document.getElementById('fileInfo').classList.add('show');
+                document.getElementById('dataPreview').classList.add('show');
+                document.getElementById('activateBtn').disabled = false;
+                document.querySelector('.file-input-label').innerHTML = '<i class="fas fa-check-circle"></i> ' + file.name;
+                document.querySelector('.file-input-label').style.background = 'linear-gradient(135deg, #28a745, #1e7e34)';
+            }
+        }
+
+        function formatFileSize(bytes) {
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function activateAgents() {
+            document.getElementById('orchestrationSection').classList.add('show');
+            document.getElementById('agentStatus').innerHTML = '<i class="fas fa-circle" style="color: #fbbf24;"></i> Processing';
+            activateNextAgent();
+            startProcessingFeed();
+            setTimeout(startAgentCommunication, 3000);
+            setTimeout(() => { document.getElementById('metricsSection').classList.add('show'); animateMetrics(); }, 8000);
+            setTimeout(() => {
+                document.getElementById('resultsSection').classList.add('show');
+                document.getElementById('networkStatus').textContent = 'All agents synchronized';
+                document.getElementById('agentStatus').innerHTML = '<i class="fas fa-circle" style="color: #28a745;"></i> All Agents Active';
+                createCharts();
+            }, 22000);
+        }
+
+        function activateNextAgent() {
+            if (currentAgent < 8) {
+                const agentEl = document.getElementById('agent' + (currentAgent + 1));
+                agentEl.classList.add('activating');
+                document.getElementById('networkStatus').textContent = `Activating ${agentNames[currentAgent]}...`;
+                setTimeout(() => {
+                    agentEl.classList.remove('activating');
+                    agentEl.classList.add('active');
+                    currentAgent++;
+                    if (currentAgent < 8) setTimeout(activateNextAgent, 1500);
+                }, 1200);
+            }
+        }
+
+        function startProcessingFeed() {
+            const feed = document.getElementById('processingFeed');
+            const messages = [
+                { type: 'SYSTEM', text: 'CSV ingestion complete - 165 records parsed from 3 warehouses' },
+                { type: 'DEMAND_FORECAST', text: 'Analyzing 50+ fashion SKUs across 5 categories' },
+                { type: 'DEMAND_FORECAST', text: 'Festival calendar loaded: Wedding season detected' },
+                { type: 'TREND_DETECTION', text: 'Social signal analysis: Ethnic wear trending +45%' },
+                { type: 'INVENTORY', text: 'Cross-warehouse inventory mapping completed' },
+                { type: 'INVENTORY', text: 'Safety stock levels computed for 150 SKU-warehouse pairs' },
+                { type: 'RETURN_PRED', text: 'Sizing pattern analysis: Western wear high-risk flagged' },
+                { type: 'CUSTOMER', text: 'Customer segmentation: 4 cohorts identified' },
+                { type: 'PROMOTION', text: 'Historical campaign analysis complete: 4.2x avg ROI' },
+                { type: 'MULTI_WH', text: 'Delhi warehouse showing stockout risk for 12 SKUs' },
+                { type: 'BRAND', text: 'Brand performance matrix: Fabindia +34% conversion' },
+                { type: 'ORCHESTRATOR', text: 'Agent consensus achieved: 96.8% forecast accuracy' },
+                { type: 'SYSTEM', text: 'Multi-agent network fully operational' }
+            ];
+            let idx = 0;
+            const timer = setInterval(() => {
+                if (idx < messages.length) {
+                    const msg = messages[idx];
+                    feed.innerHTML += `<div class="feed-message"><span class="timestamp">[${new Date().toLocaleTimeString()}]</span><span class="agent-tag">${msg.type}</span>${msg.text}</div>`;
+                    feed.scrollTop = feed.scrollHeight;
+                    idx++;
+                } else clearInterval(timer);
+            }, 900);
+        }
+
+        function startAgentCommunication() {
+            const commPanel = document.getElementById('commVisual');
+            const communications = [
+                { from: 'Demand Forecast', to: 'Inventory Optimizer', icon: 'fa-chart-line', message: 'Sharing 30-day demand projections', data: '{ "category": "Women_Ethnic", "forecast": "+45%", "confidence": 0.94 }' },
+                { from: 'Trend Detection', to: 'Demand Forecast', icon: 'fa-fire', message: 'Fashion trend signal detected', data: '{ "trend": "Wedding_Season", "impact": "high", "weeks": 6 }' },
+                { from: 'Inventory Optimizer', to: 'Multi-Warehouse', icon: 'fa-warehouse', message: 'Requesting cross-warehouse transfer', data: '{ "from": "Mumbai", "to": "Delhi", "skus": 12, "qty": 450 }' },
+                { from: 'Customer Intel', to: 'Promotion Planning', icon: 'fa-users', message: 'Premium segment preferences shared', data: '{ "segment": "Premium", "discount_sensitivity": "low" }' },
+                { from: 'Return Prediction', to: 'Brand Analytics', icon: 'fa-undo-alt', message: 'Brand-wise return patterns', data: '{ "high_return": ["Brand_A"], "low_return": ["Fabindia"] }' },
+                { from: 'Orchestrator', to: 'ALL_AGENTS', icon: 'fa-brain', message: 'Broadcasting optimized recommendations', data: '{ "action": "sync_complete", "agents_aligned": 8 }' }
+            ];
+            let idx = 0;
+            const timer = setInterval(() => {
+                if (idx < communications.length) {
+                    const comm = communications[idx];
+                    commPanel.innerHTML += `<div class="comm-message"><div class="comm-icon"><i class="fas ${comm.icon}"></i></div><div class="comm-content"><div class="comm-title">${comm.from} <span class="arrow">→</span> ${comm.to}</div><div class="comm-body">${comm.message}</div><div class="comm-data">${comm.data}</div></div></div>`;
+                    commPanel.scrollTop = commPanel.scrollHeight;
+                    idx++;
+                } else clearInterval(timer);
+            }, 2500);
+        }
+
+        function animateMetrics() {
+            animateValue('forecastAccuracy', 0, 96.8, '%', 2000);
+            animateValue('inventoryReduction', 0, 34, '%', 2000);
+            animateValue('returnPrediction', 0, 87.5, '%', 2000);
+            animateValue('revenueImpact', 0, 48.5, ' Cr', 2000, '₹');
+        }
+
+        function animateValue(id, start, end, suffix, duration, prefix = '') {
+            const el = document.getElementById(id);
+            const startTime = performance.now();
+            function update(currentTime) {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                el.textContent = prefix + (start + (end - start) * progress).toFixed(1) + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        function createCharts() {
+            new Chart(document.getElementById('demandChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [
+                        { label: 'Women Ethnic', data: [2500, 3200, 4100, 5200], borderColor: '#4daae8', backgroundColor: 'rgba(77,170,232,0.1)', tension: 0.4, fill: true },
+                        { label: 'Women Western', data: [1800, 2100, 2400, 2700], borderColor: '#146eb4', backgroundColor: 'rgba(20,110,180,0.1)', tension: 0.4, fill: true },
+                        { label: 'Accessories', data: [1200, 1400, 1700, 2000], borderColor: '#28a745', backgroundColor: 'rgba(40,167,69,0.1)', tension: 0.4, fill: true }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: 'rgba(255,255,255,0.8)' } } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'rgba(255,255,255,0.7)' } }, y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'rgba(255,255,255,0.7)' } } } }
+            });
+            new Chart(document.getElementById('inventoryChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Mumbai', 'Delhi', 'Bangalore'],
+                    datasets: [
+                        { label: 'Healthy', data: [78, 65, 82], backgroundColor: '#28a745' },
+                        { label: 'Low Stock', data: [15, 25, 12], backgroundColor: '#ff9900' },
+                        { label: 'Overstock', data: [7, 10, 6], backgroundColor: '#dc3545' }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: 'rgba(255,255,255,0.8)' } } }, scales: { x: { stacked: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'rgba(255,255,255,0.7)' } }, y: { stacked: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'rgba(255,255,255,0.7)' } } } }
+            });
+        }
+
+        document.getElementById('activateBtn').addEventListener('click', () => {
+            setTimeout(() => document.getElementById('orchestrationSection').scrollIntoView({ behavior: 'smooth' }), 500);
+        });
+    </script>
+</body>
+</html>

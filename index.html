@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShellKode AI - Fashion E-Commerce Supply Chain Transformation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4daae8;
+            --dark-blue: #146eb4;
+            --light-gray: #f2f2f2;
+            --white: #ffffff;
+            --dark-text: #2d2d2d;
+            --success-green: #28a745;
+            --warning-orange: #ff9900;
+            --danger-red: #dc3545;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(20, 110, 180, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .logo-img {
+            width: 126px;
+            height: auto;
+            display: block;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .title-section {
+            flex: 1;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .title-section h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            z-index: 10;
+        }
+
+        .ai-pulse {
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: aiPulse 2s infinite;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        @keyframes aiPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .use-case-title {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            font-weight: 700;
+            border-bottom: 4px solid var(--primary-blue);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .problem-section, .solution-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .section-header i { color: var(--warning-orange); font-size: 1.3rem; }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .problem-icon.red { background: #ffebee; color: var(--danger-red); }
+        .problem-icon.orange { background: #fff3e0; color: var(--warning-orange); }
+        .problem-icon.blue { background: #e3f2fd; color: var(--dark-blue); }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .financial-impact {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-left: 4px solid var(--warning-orange);
+        }
+
+        .financial-impact strong { color: #e65100; }
+        .financial-impact span { color: #bf360c; font-size: 0.95rem; }
+
+        .solution-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-header i { color: var(--dark-blue); font-size: 1.5rem; }
+        .solution-header span { font-size: 1.1rem; font-weight: 600; }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .solution-card {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .solution-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .solution-card ul { list-style: none; }
+
+        .solution-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .solution-card li::before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--primary-blue);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(20, 110, 180, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(20, 110, 180, 0.5);
+        }
+
+        .agents-section h2 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .agent-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+            cursor: pointer;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(20, 110, 180, 0.15);
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .agent-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .agent-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--success-green);
+        }
+
+        .agent-status i { font-size: 0.5rem; }
+
+        .agent-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .agent-metrics { display: flex; gap: 1.5rem; }
+
+        .agent-metric { text-align: center; }
+
+        .agent-metric-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .agent-metric-label { font-size: 0.75rem; color: #888; }
+
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .launch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(20, 110, 180, 0.4);
+        }
+
+        .footer-stats {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #0d4f7a 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            color: white;
+        }
+
+        .footer-stats h2 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-stats > p {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .footer-metric {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+
+        .footer-metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .footer-metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .processing-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .processing-content { text-align: center; color: white; }
+
+        .processing-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; gap: 1rem; }
+            .metrics-bar, .footer-metrics { grid-template-columns: repeat(2, 1fr); }
+            .agents-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="shellkode.png" alt="ShellKode" class="logo-img">
+        <div class="title-section">
+            <h1>🛍️ Fashion E-Commerce AI Platform</h1>
+            <p class="subtitle">Multi-Agent Supply Chain Transformation</p>
+        </div>
+        <div class="ai-status">
+            <div class="ai-pulse"></div>
+            <span>8 AI Agents Ready</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="use-case-title">Use Case 1: Supply Chain Transformation</h2>
+
+        <div class="problem-section">
+            <div class="section-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Problem Statement</span>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon red"><i class="fas fa-chart-line"></i></div>
+                    <h3>Demand Volatility</h3>
+                    <p>Seasonal fashion trends, festival spikes, and promotional impacts cause unpredictable inventory needs across 2M+ SKUs</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon orange"><i class="fas fa-boxes"></i></div>
+                    <h3>Stockouts & Overstocking</h3>
+                    <p>24% of fashion SKUs face stockouts during peak seasons while 19% remain overstocked, impacting sales and working capital</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon blue"><i class="fas fa-file-excel"></i></div>
+                    <h3>Manual Forecasting</h3>
+                    <p>Excel-based forecasting lacks SKU-level granularity, trend detection, and real-time market signal integration</p>
+                </div>
+            </div>
+            <div class="financial-impact">
+                <i class="fas fa-rupee-sign" style="font-size: 1.5rem; color: #e65100;"></i>
+                <div>
+                    <strong>Financial Impact:</strong>
+                    <span>₹85-120Cr annual opportunity loss due to stockouts and ₹65Cr locked in slow-moving fashion inventory</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="solution-section">
+            <div class="solution-header">
+                <i class="fas fa-rocket"></i>
+                <span>ShellKode Solution Approach</span>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>🤖 AI-Powered Fashion Demand Forecasting</h3>
+                    <ul>
+                        <li>SKU-level prediction using historical sales, seasonality, trends, and festival calendars</li>
+                        <li>Warehouse-specific forecasting with regional fashion preferences</li>
+                        <li>Real-time model retraining based on actual sales performance</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <h3>📦 Intelligent Inventory Management</h3>
+                    <ul>
+                        <li>Automated replenishment signals with predictive stockout alerts</li>
+                        <li>Fashion aging dashboards with slow-moving SKU identification</li>
+                        <li>Integration with warehouse systems for automated PO generation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="metrics-bar">
+                <div class="metric-item">
+                    <div class="metric-value">7-90 Days</div>
+                    <div class="metric-label">Forecast Horizon</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">2M+ SKUs</div>
+                    <div class="metric-label">Coverage</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">Hourly</div>
+                    <div class="metric-label">Refresh Rate</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value">44+ Warehouses</div>
+                    <div class="metric-label">Pan-India Coverage</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="integrated-workflow.html" class="cta-button">
+                <i class="fas fa-play-circle"></i>
+                Experience Live Multi-Agent Demo
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="agents-section">
+            <h2>🧠 Meet the AI Agent Network</h2>
+            <div class="agents-grid">
+                <div class="agent-card" onclick="launchAgent('demand-forecasting-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="agent-info">
+                            <h3>Fashion Demand Forecasting</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Predicts demand for 2M+ fashion SKUs using trend analysis, seasonality patterns, and festival calendars.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">96.8%</div>
+                            <div class="agent-metric-label">Accuracy</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">90 Days</div>
+                            <div class="agent-metric-label">Horizon</div>
+                        </div>
+                    </div>
+                    <a href="demand-forecasting-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('inventory-optimization-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-warehouse"></i></div>
+                        <div class="agent-info">
+                            <h3>Inventory Optimization</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Optimizes stock levels across 44 warehouses, reducing stockouts while freeing working capital.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">₹18.5Cr</div>
+                            <div class="agent-metric-label">Capital Freed</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">34%</div>
+                            <div class="agent-metric-label">Reduction</div>
+                        </div>
+                    </div>
+                    <a href="inventory-optimization-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('trend-detection-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-fire"></i></div>
+                        <div class="agent-info">
+                            <h3>Fashion Trend Detection</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Monitors social media, runway shows, and search trends to identify emerging fashion trends early.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">3-6 Weeks</div>
+                            <div class="agent-metric-label">Early Detection</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">89%</div>
+                            <div class="agent-metric-label">Hit Rate</div>
+                        </div>
+                    </div>
+                    <a href="trend-detection-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('return-prediction-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-undo-alt"></i></div>
+                        <div class="agent-info">
+                            <h3>Return Prediction Agent</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Predicts return probability at order level, reducing reverse logistics costs and improving sizing recommendations.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">23%</div>
+                            <div class="agent-metric-label">Return Reduction</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">₹12Cr</div>
+                            <div class="agent-metric-label">Annual Savings</div>
+                        </div>
+                    </div>
+                    <a href="return-prediction-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('promotion-planning-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-tags"></i></div>
+                        <div class="agent-info">
+                            <h3>Promotion Planning Agent</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Optimizes sale events, discount strategies, and promotional timing for maximum revenue and inventory clearance.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">28%</div>
+                            <div class="agent-metric-label">Revenue Uplift</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">4.2x</div>
+                            <div class="agent-metric-label">Promo ROI</div>
+                        </div>
+                    </div>
+                    <a href="promotion-planning-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('customer-intelligence-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-users"></i></div>
+                        <div class="agent-info">
+                            <h3>Customer Intelligence</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Analyzes customer segments, style preferences, and purchase patterns for personalized recommendations.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">15M+</div>
+                            <div class="agent-metric-label">Customers</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">82%</div>
+                            <div class="agent-metric-label">Retention</div>
+                        </div>
+                    </div>
+                    <a href="customer-intelligence-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('multi-warehouse-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="agent-info">
+                            <h3>Multi-Warehouse Optimizer</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Optimizes inventory distribution across 44 warehouses based on regional demand and delivery speed requirements.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">44</div>
+                            <div class="agent-metric-label">Warehouses</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">91%</div>
+                            <div class="agent-metric-label">Fill Rate</div>
+                        </div>
+                    </div>
+                    <a href="multi-warehouse-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+
+                <div class="agent-card" onclick="launchAgent('brand-performance-agent.html')">
+                    <div class="agent-header">
+                        <div class="agent-icon"><i class="fas fa-crown"></i></div>
+                        <div class="agent-info">
+                            <h3>Brand Performance Agent</h3>
+                            <div class="agent-status"><i class="fas fa-circle"></i> Active</div>
+                        </div>
+                    </div>
+                    <p class="agent-description">Analyzes brand-wise performance, identifies star performers, and recommends assortment optimization.</p>
+                    <div class="agent-metrics">
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">2000+</div>
+                            <div class="agent-metric-label">Brands</div>
+                        </div>
+                        <div class="agent-metric">
+                            <div class="agent-metric-value">₹8.2Cr</div>
+                            <div class="agent-metric-label">Revenue Impact</div>
+                        </div>
+                    </div>
+                    <a href="brand-performance-agent.html" class="launch-btn"><i class="fas fa-play"></i> Launch</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-stats">
+            <h2><i class="fas fa-trophy"></i> Combined Agent Impact</h2>
+            <p>When all 8 agents collaborate, the synergy creates exponential value</p>
+            <div class="footer-metrics">
+                <div class="footer-metric">
+                    <div class="footer-metric-value">₹48.5Cr</div>
+                    <div class="footer-metric-label">Annual Value Creation</div>
+                </div>
+                <div class="footer-metric">
+                    <div class="footer-metric-value">892%</div>
+                    <div class="footer-metric-label">Combined ROI</div>
+                </div>
+                <div class="footer-metric">
+                    <div class="footer-metric-value">2.1</div>
+                    <div class="footer-metric-label">Months to Payback</div>
+                </div>
+                <div class="footer-metric">
+                    <div class="footer-metric-value">24/7</div>
+                    <div class="footer-metric-label">Autonomous Operation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="processing-overlay" id="processingOverlay">
+        <div class="processing-content">
+            <div class="processing-spinner"></div>
+            <h2>Initializing AI Agent...</h2>
+            <p>Loading analytics and intelligence modules</p>
+        </div>
+    </div>
+
+    <script>
+        function launchAgent(agentUrl) {
+            document.getElementById('processingOverlay').style.display = 'flex';
+            setTimeout(() => { window.location.href = agentUrl; }, 1500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotion Planning Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .agent-icon-large { background: linear-gradient(135deg, #ff9900, #e67e00) !important; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Promotion Planning Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-tags"></i></div>
+            <div class="agent-details">
+                <h1>Promotion Planning Agent</h1>
+                <p>AI-optimized promotional strategies for maximum revenue impact. Analyzes historical campaign data, customer segments, and inventory levels to recommend optimal timing, discounts, and product selection.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge savings"><i class="fas fa-chart-line"></i> 4.2x Avg ROI</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Campaign & Sales Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered promotion planning</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-bullhorn"></i></div><span class="step-label">Campaign Analysis</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-calculator"></i></div><span class="step-label">ROI Modeling</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-clock"></i></div><span class="step-label">Timing Optimization</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-percent"></i></div><span class="step-label">Discount Strategy</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><span class="step-label">Recommendations</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricUplift">--</div><div class="metric-label">Revenue Uplift</div><div class="metric-change">During promotions</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricROI">--</div><div class="metric-label">Average Promo ROI</div><div class="metric-change">↑ from 2.8x baseline</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricSuccess">--</div><div class="metric-label">Campaign Success Rate</div><div class="metric-change">Meeting targets</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricRevenue">--</div><div class="metric-label">Incremental Revenue</div><div class="metric-change">This quarter</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-bar"></i> Campaign Performance Analysis</h3><div class="chart-container"><canvas id="promoChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-calendar-alt"></i> Upcoming Campaigns</h3>
+                    <div style="padding: 0.5rem;">
+                        <div style="background: linear-gradient(135deg, rgba(77,170,232,0.1), rgba(20,110,180,0.1)); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; border-left: 4px solid #4daae8;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><strong style="color: #146eb4;">🎉 Wedding Season Sale</strong><span style="background: rgba(40,167,69,0.1); color: #28a745; padding: 0.2rem 0.75rem; border-radius: 10px; font-size: 0.75rem; font-weight: 600;">AI Optimized</span></div>
+                            <div style="display: flex; gap: 1.5rem; font-size: 0.9rem; color: #666;"><span><strong>Discount:</strong> 20-40%</span><span><strong>Duration:</strong> Feb 5-14</span><span><strong>Projected:</strong> ₹8.5Cr</span></div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(255,153,0,0.1), rgba(230,126,0,0.1)); border-radius: 12px; padding: 1.25rem; border-left: 4px solid #ff9900;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><strong style="color: #146eb4;">👗 End of Season Clearance</strong><span style="background: rgba(255,153,0,0.1); color: #ff9900; padding: 0.2rem 0.75rem; border-radius: 10px; font-size: 0.75rem; font-weight: 600;">Under Review</span></div>
+                            <div style="display: flex; gap: 1.5rem; font-size: 0.9rem; color: #666;"><span><strong>Discount:</strong> 40-60%</span><span><strong>Duration:</strong> Feb 20-28</span><span><strong>Projected:</strong> ₹4.2Cr</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-calendar-check"></i></div><div class="insight-title">Optimal Timing</div></div><div class="insight-value">Fri-Sun</div><div class="insight-desc">+45% conversion on weekends</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-users"></i></div><div class="insight-title">Premium Segment</div></div><div class="insight-value">20% Max</div><div class="insight-desc">Low discount sensitivity - protect margins</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-layer-group"></i></div><div class="insight-title">Category Mix</div></div><div class="insight-value">Ethnic First</div><div class="insight-desc">Lead with ethnic wear for wedding season</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/promotion-planning-agent.js"></script>
+</body>
+</html>

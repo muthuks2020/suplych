@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Warehouse Optimizer Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Multi-Warehouse Optimizer Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-network-wired"></i></div>
+            <div class="agent-details">
+                <h1>Multi-Warehouse Optimizer Agent</h1>
+                <p>Intelligent inventory distribution across 44 warehouses. Optimizes stock placement based on regional demand patterns, delivery speed requirements, and transfer costs.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge accuracy"><i class="fas fa-warehouse"></i> 44 Warehouses</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Warehouse & Distribution Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered warehouse optimization</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-map-marked-alt"></i></div><span class="step-label">Network Mapping</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-chart-bar"></i></div><span class="step-label">Demand Allocation</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-exchange-alt"></i></div><span class="step-label">Transfer Optimization</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-route"></i></div><span class="step-label">Route Planning</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><span class="step-label">Recommendations</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricWarehouses">--</div><div class="metric-label">Warehouses Managed</div><div class="metric-change">Pan-India coverage</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricFillRate">--</div><div class="metric-label">Fill Rate</div><div class="metric-change">↑ from 82%</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricDelivery">--</div><div class="metric-label">Avg Delivery Time</div><div class="metric-change">↓ from 3.4 days</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricSavings">--</div><div class="metric-label">Transfer Cost Saved</div><div class="metric-change">This quarter</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-bar"></i> Warehouse Performance Matrix</h3><div class="chart-container"><canvas id="warehouseChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-exchange-alt"></i> Recommended Transfers</h3>
+                    <div style="padding: 0.5rem;">
+                        <div style="background: #fff3cd; border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; border-left: 4px solid #ff9900;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong style="color: #146eb4;">Mumbai → Delhi</strong>
+                                <span style="background: rgba(255,153,0,0.2); color: #cc7700; padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600;">High Priority</span>
+                            </div>
+                            <div style="font-size: 0.85rem; color: #666;">12 SKUs | 450 units | ₹18.5L value | Stockout prevention</div>
+                        </div>
+                        <div style="background: #e3f2fd; border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; border-left: 4px solid #4daae8;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong style="color: #146eb4;">Bangalore → Chennai</strong>
+                                <span style="background: rgba(77,170,232,0.2); color: #146eb4; padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600;">Medium Priority</span>
+                            </div>
+                            <div style="font-size: 0.85rem; color: #666;">8 SKUs | 280 units | ₹9.2L value | Demand surge</div>
+                        </div>
+                        <div style="background: #d4edda; border-radius: 12px; padding: 1rem; border-left: 4px solid #28a745;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <strong style="color: #146eb4;">Delhi → Kolkata</strong>
+                                <span style="background: rgba(40,167,69,0.2); color: #1e7e34; padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.7rem; font-weight: 600;">Optimization</span>
+                            </div>
+                            <div style="font-size: 0.85rem; color: #666;">5 SKUs | 180 units | ₹6.8L value | Regional preference</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-truck"></i></div><div class="insight-title">Same-Day Delivery</div></div><div class="insight-value">45%</div><div class="insight-desc">Orders eligible with optimized placement</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-map-marker-alt"></i></div><div class="insight-title">Regional Demand</div></div><div class="insight-value">North +34%</div><div class="insight-desc">Ethnic wear demand higher in North India</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-rupee-sign"></i></div><div class="insight-title">Network Savings</div></div><div class="insight-value">₹6.5Cr</div><div class="insight-desc">Quarterly transfer cost reduction</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/multi-warehouse-agent.js"></script>
+</body>
+</html>

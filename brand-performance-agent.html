@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Performance Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .agent-icon-large { background: linear-gradient(135deg, #ffd700, #ffb300) !important; }
+        .brand-table { width: 100%; border-collapse: collapse; }
+        .brand-table th { background: linear-gradient(135deg, #4daae8, #146eb4); color: white; padding: 0.75rem; text-align: left; }
+        .brand-table td { padding: 0.75rem; border-bottom: 1px solid #eee; }
+        .brand-rank { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: white; }
+        .brand-rank.gold { background: linear-gradient(135deg, #ffd700, #ffb300); }
+        .brand-rank.silver { background: linear-gradient(135deg, #c0c0c0, #a8a8a8); }
+        .brand-rank.bronze { background: linear-gradient(135deg, #cd7f32, #b87333); }
+        .trend-up { color: #28a745; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Brand Performance Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-crown"></i></div>
+            <div class="agent-details">
+                <h1>Brand Performance Agent</h1>
+                <p>Comprehensive brand analytics across 2000+ brands. Identifies star performers, underperformers, and recommends assortment optimization strategies for maximum revenue and margin impact.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge accuracy"><i class="fas fa-star"></i> 2000+ Brands</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Brand Sales Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered brand analytics</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-tags"></i></div><span class="step-label">Brand Mapping</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-chart-line"></i></div><span class="step-label">Performance Scoring</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-fire"></i></div><span class="step-label">Trend Analysis</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-balance-scale"></i></div><span class="step-label">Benchmarking</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><span class="step-label">Recommendations</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricBrands">--</div><div class="metric-label">Brands Tracked</div><div class="metric-change">Real-time analytics</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricImpact">--</div><div class="metric-label">Revenue Impact</div><div class="metric-change">From optimization</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricGrowth">--</div><div class="metric-label">Top Brand Growth</div><div class="metric-change">Fabindia leading</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricReview">--</div><div class="metric-label">Brands to Review</div><div class="metric-change">Underperforming</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-line"></i> Brand Performance Trends</h3><div class="chart-container"><canvas id="brandChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-trophy"></i> Top Performing Brands</h3>
+                    <table class="brand-table">
+                        <thead><tr><th>Rank</th><th>Brand</th><th>Revenue</th><th>Growth</th></tr></thead>
+                        <tbody>
+                            <tr><td><div class="brand-rank gold">1</div></td><td><strong>Fabindia</strong></td><td>₹12.5Cr</td><td class="trend-up">+34%</td></tr>
+                            <tr><td><div class="brand-rank silver">2</div></td><td><strong>W</strong></td><td>₹9.8Cr</td><td class="trend-up">+28%</td></tr>
+                            <tr><td><div class="brand-rank bronze">3</div></td><td><strong>Biba</strong></td><td>₹8.2Cr</td><td class="trend-up">+22%</td></tr>
+                            <tr><td><div style="width:30px;height:30px;background:#e9ecef;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#666;">4</div></td><td>ONLY</td><td>₹7.5Cr</td><td class="trend-up">+18%</td></tr>
+                            <tr><td><div style="width:30px;height:30px;background:#e9ecef;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#666;">5</div></td><td>Vero Moda</td><td>₹6.8Cr</td><td class="trend-up">+15%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-arrow-up"></i></div><div class="insight-title">Expand Fabindia</div></div><div class="insight-value">+₹4.5Cr</div><div class="insight-desc">Top performer - expand SKU range</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-exclamation-circle"></i></div><div class="insight-title">Review Underperformers</div></div><div class="insight-value">156</div><div class="insight-desc">Brands with <1% conversion - consider action</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-handshake"></i></div><div class="insight-title">New Brand Potential</div></div><div class="insight-value">23</div><div class="insight-desc">Emerging brands identified for onboarding</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/brand-performance-agent.js"></script>
+</body>
+</html>

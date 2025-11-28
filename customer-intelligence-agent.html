@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Intelligence Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Customer Intelligence Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status"><div class="ai-pulse"></div><span>AI Agent Ready</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-users"></i></div>
+            <div class="agent-details">
+                <h1>Customer Intelligence Agent</h1>
+                <p>Deep customer analytics and segmentation. Analyzes purchase patterns, style preferences, lifetime value, and churn risk to enable personalized marketing and retention strategies.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge accuracy"><i class="fas fa-user-friends"></i> 15M+ Customers</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Customer Transaction Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered customer intelligence</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-layer-group"></i></div><span class="step-label">Segmentation</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-search"></i></div><span class="step-label">Behavior Analysis</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-gem"></i></div><span class="step-label">LTV Modeling</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-exclamation-triangle"></i></div><span class="step-label">Churn Prediction</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-lightbulb"></i></div><span class="step-label">Recommendations</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricCustomers">--</div><div class="metric-label">Customers Analyzed</div><div class="metric-change">Real-time profiling</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricRetention">--</div><div class="metric-label">Retention Rate</div><div class="metric-change">↑ from 74%</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricLTV">--</div><div class="metric-label">Avg Lifetime Value</div><div class="metric-change">↑ 23% YoY</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricSegments">--</div><div class="metric-label">Key Segments</div><div class="metric-change">AI-identified</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-pie"></i> Customer Segment Distribution</h3><div class="chart-container"><canvas id="segmentChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-layer-group"></i> Segment Profiles</h3>
+                    <div style="padding: 0.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 0.75rem; border-left: 4px solid #ffd700;">
+                            <div style="font-size: 2rem;">👑</div>
+                            <div style="flex: 1;"><strong style="color: #146eb4;">Premium Loyalists</strong><br><small style="color: #666;">18% of customers | ₹12,500 avg LTV</small></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 0.75rem; border-left: 4px solid #4daae8;">
+                            <div style="font-size: 2rem;">🛍️</div>
+                            <div style="flex: 1;"><strong style="color: #146eb4;">Regular Shoppers</strong><br><small style="color: #666;">42% of customers | ₹4,200 avg LTV</small></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 12px; margin-bottom: 0.75rem; border-left: 4px solid #28a745;">
+                            <div style="font-size: 2rem;">🌱</div>
+                            <div style="flex: 1;"><strong style="color: #146eb4;">New Explorers</strong><br><small style="color: #666;">25% of customers | ₹1,800 avg LTV</small></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #6c757d;">
+                            <div style="font-size: 2rem;">🌙</div>
+                            <div style="flex: 1;"><strong style="color: #146eb4;">At-Risk Dormant</strong><br><small style="color: #666;">15% of customers | Need re-engagement</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-bullseye"></i></div><div class="insight-title">Personalization</div></div><div class="insight-value">+₹3.2Cr</div><div class="insight-desc">32% of Premium prefer ethnic - target with exclusive</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-user-minus"></i></div><div class="insight-title">Churn Risk Alert</div></div><div class="insight-value">2.1L</div><div class="insight-desc">Customers showing pre-churn signals - act now</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-arrow-up"></i></div><div class="insight-title">Upgrade Potential</div></div><div class="insight-value">45K</div><div class="insight-desc">Regular shoppers ready for Premium tier</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/customer-intelligence-agent.js"></script>
+</body>
+</html>

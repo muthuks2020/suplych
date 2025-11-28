@@ -1,0 +1,216 @@
+date,warehouse,category,sku_id,product_name,brand,units_sold,revenue_inr,temperature_c,festival_flag,sale_flag,return_units,inventory_on_hand,days_to_stockout,customer_segment,avg_rating
+2025-01-01,Mumbai_Central,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,145,1015000,28.5,0,1,12,234,8,Premium,4.6
+2025-01-01,Mumbai_Central,Women_Western,SKU002,Floral Maxi Dress,ONLY,89,133500,28.5,0,1,7,156,12,Young_Professional,4.3
+2025-01-01,Mumbai_Central,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,67,268000,28.5,0,1,4,89,9,Premium,4.5
+2025-01-01,Mumbai_Central,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,112,224000,28.5,0,1,9,178,11,Professional,4.4
+2025-01-01,Mumbai_Central,Accessories,SKU005,Leather Tote Bag,Hidesign,34,170000,28.5,0,1,2,45,10,Premium,4.7
+2025-01-01,Delhi_Gurgaon,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,178,1246000,18.2,0,1,15,289,7,Premium,4.6
+2025-01-01,Delhi_Gurgaon,Women_Western,SKU002,Floral Maxi Dress,ONLY,56,84000,18.2,0,1,5,98,15,Young_Professional,4.3
+2025-01-01,Delhi_Gurgaon,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,45,180000,18.2,0,1,3,67,12,Premium,4.5
+2025-01-01,Delhi_Gurgaon,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,134,268000,18.2,0,1,11,198,10,Professional,4.4
+2025-01-01,Delhi_Gurgaon,Accessories,SKU005,Leather Tote Bag,Hidesign,41,205000,18.2,0,1,3,52,9,Premium,4.7
+2025-01-01,Bangalore_Whitefield,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,98,686000,26.8,0,1,8,167,11,Premium,4.6
+2025-01-01,Bangalore_Whitefield,Women_Western,SKU002,Floral Maxi Dress,ONLY,123,184500,26.8,0,1,10,189,10,Young_Professional,4.3
+2025-01-01,Bangalore_Whitefield,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,78,312000,26.8,0,1,6,112,9,Premium,4.5
+2025-01-01,Bangalore_Whitefield,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,89,178000,26.8,0,1,7,145,13,Professional,4.4
+2025-01-01,Bangalore_Whitefield,Accessories,SKU005,Leather Tote Bag,Hidesign,56,280000,26.8,0,1,4,78,10,Premium,4.7
+2025-01-02,Mumbai_Central,Women_Ethnic,SKU006,Anarkali Kurta Set,W,234,351000,29.1,0,1,19,312,6,Mass_Premium,4.2
+2025-01-02,Mumbai_Central,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,67,200100,29.1,0,1,5,89,11,Professional,4.4
+2025-01-02,Mumbai_Central,Women_Footwear,SKU008,White Sneakers,Puma,189,283500,29.1,0,1,15,234,8,Young_Professional,4.5
+2025-01-02,Mumbai_Central,Men_Casual,SKU009,Printed T-Shirt,Roadster,312,187200,29.1,0,1,25,456,10,Value,4.1
+2025-01-02,Mumbai_Central,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,145,72500,29.1,0,1,12,189,9,Young_Professional,4.3
+2025-01-02,Delhi_Gurgaon,Women_Ethnic,SKU006,Anarkali Kurta Set,W,289,433500,17.8,0,1,23,378,5,Mass_Premium,4.2
+2025-01-02,Delhi_Gurgaon,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,78,233400,17.8,0,1,6,102,10,Professional,4.4
+2025-01-02,Delhi_Gurgaon,Women_Footwear,SKU008,White Sneakers,Puma,156,234000,17.8,0,1,12,198,9,Young_Professional,4.5
+2025-01-02,Delhi_Gurgaon,Men_Casual,SKU009,Printed T-Shirt,Roadster,278,166800,17.8,0,1,22,389,11,Value,4.1
+2025-01-02,Delhi_Gurgaon,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,167,83500,17.8,0,1,14,212,8,Young_Professional,4.3
+2025-01-02,Bangalore_Whitefield,Women_Ethnic,SKU006,Anarkali Kurta Set,W,198,297000,27.2,0,1,16,267,7,Mass_Premium,4.2
+2025-01-02,Bangalore_Whitefield,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,89,266700,27.2,0,1,7,118,9,Professional,4.4
+2025-01-02,Bangalore_Whitefield,Women_Footwear,SKU008,White Sneakers,Puma,201,301500,27.2,0,1,16,256,7,Young_Professional,4.5
+2025-01-02,Bangalore_Whitefield,Men_Casual,SKU009,Printed T-Shirt,Roadster,267,160200,27.2,0,1,21,345,10,Value,4.1
+2025-01-02,Bangalore_Whitefield,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,134,67000,27.2,0,1,11,178,10,Young_Professional,4.3
+2025-01-03,Mumbai_Central,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,178,178000,28.8,0,0,14,223,9,Mass_Premium,4.3
+2025-01-03,Mumbai_Central,Women_Western,SKU012,Denim Jacket,H&M,123,184500,28.8,0,0,10,156,10,Young_Professional,4.2
+2025-01-03,Mumbai_Central,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,234,117000,28.8,0,0,19,289,8,Value,4.4
+2025-01-03,Mumbai_Central,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,156,234000,28.8,0,0,12,198,9,Professional,4.5
+2025-01-03,Mumbai_Central,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,67,201000,28.8,0,0,5,89,11,Professional,4.6
+2025-01-03,Delhi_Gurgaon,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,212,212000,16.5,0,0,17,267,8,Mass_Premium,4.3
+2025-01-03,Delhi_Gurgaon,Women_Western,SKU012,Denim Jacket,H&M,89,133500,16.5,0,0,7,112,12,Young_Professional,4.2
+2025-01-03,Delhi_Gurgaon,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,189,94500,16.5,0,0,15,234,9,Value,4.4
+2025-01-03,Delhi_Gurgaon,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,178,267000,16.5,0,0,14,223,8,Professional,4.5
+2025-01-03,Delhi_Gurgaon,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,78,234000,16.5,0,0,6,98,10,Professional,4.6
+2025-01-03,Bangalore_Whitefield,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,156,156000,26.4,0,0,12,198,10,Mass_Premium,4.3
+2025-01-03,Bangalore_Whitefield,Women_Western,SKU012,Denim Jacket,H&M,145,217500,26.4,0,0,12,178,9,Young_Professional,4.2
+2025-01-03,Bangalore_Whitefield,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,201,100500,26.4,0,0,16,245,8,Value,4.4
+2025-01-03,Bangalore_Whitefield,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,134,201000,26.4,0,0,11,167,10,Professional,4.5
+2025-01-03,Bangalore_Whitefield,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,89,267000,26.4,0,0,7,112,9,Professional,4.6
+2025-01-04,Mumbai_Central,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,145,290000,29.3,0,0,12,189,10,Premium,4.5
+2025-01-04,Mumbai_Central,Women_Western,SKU017,Crop Top - Printed,Forever 21,267,133500,29.3,0,0,21,334,7,Young_Professional,4.0
+2025-01-04,Mumbai_Central,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,56,224000,29.3,0,0,4,78,11,Premium,4.6
+2025-01-04,Mumbai_Central,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,189,283500,29.3,0,0,15,234,8,Professional,4.4
+2025-01-04,Mumbai_Central,Accessories,SKU020,Smart Watch Strap,Boat,312,156000,29.3,0,0,25,389,6,Young_Professional,4.2
+2025-01-04,Delhi_Gurgaon,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,178,356000,15.8,0,0,14,223,9,Premium,4.5
+2025-01-04,Delhi_Gurgaon,Women_Western,SKU017,Crop Top - Printed,Forever 21,234,117000,15.8,0,0,19,289,8,Young_Professional,4.0
+2025-01-04,Delhi_Gurgaon,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,67,268000,15.8,0,0,5,89,10,Premium,4.6
+2025-01-04,Delhi_Gurgaon,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,212,318000,15.8,0,0,17,267,7,Professional,4.4
+2025-01-04,Delhi_Gurgaon,Accessories,SKU020,Smart Watch Strap,Boat,289,144500,15.8,0,0,23,356,5,Young_Professional,4.2
+2025-01-04,Bangalore_Whitefield,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,123,246000,27.6,0,0,10,156,11,Premium,4.5
+2025-01-04,Bangalore_Whitefield,Women_Western,SKU017,Crop Top - Printed,Forever 21,289,144500,27.6,0,0,23,356,6,Young_Professional,4.0
+2025-01-04,Bangalore_Whitefield,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,78,312000,27.6,0,0,6,102,9,Premium,4.6
+2025-01-04,Bangalore_Whitefield,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,167,250500,27.6,0,0,13,212,8,Professional,4.4
+2025-01-04,Bangalore_Whitefield,Accessories,SKU020,Smart Watch Strap,Boat,345,172500,27.6,0,0,28,423,4,Young_Professional,4.2
+2025-01-05,Mumbai_Central,Women_Ethnic,SKU021,Lehenga Choli - Bridal,Sabyasachi,23,2300000,28.6,0,0,2,34,12,Luxury,4.9
+2025-01-05,Mumbai_Central,Women_Western,SKU022,Jumpsuit - Navy,Zara,89,178000,28.6,0,0,7,112,10,Premium,4.5
+2025-01-05,Mumbai_Central,Women_Footwear,SKU023,Flat Sandals - Tan,Clarks,178,178000,28.6,0,0,14,223,8,Professional,4.4
+2025-01-05,Mumbai_Central,Men_Casual,SKU024,Joggers - Grey,Nike,234,351000,28.6,0,0,19,289,7,Young_Professional,4.6
+2025-01-05,Mumbai_Central,Accessories,SKU025,Sunglasses - Aviator,Ray-Ban,112,560000,28.6,0,0,9,145,9,Premium,4.7
+2025-01-05,Delhi_Gurgaon,Women_Ethnic,SKU021,Lehenga Choli - Bridal,Sabyasachi,34,3400000,14.2,0,0,3,45,10,Luxury,4.9
+2025-01-05,Delhi_Gurgaon,Women_Western,SKU022,Jumpsuit - Navy,Zara,78,156000,14.2,0,0,6,98,11,Premium,4.5
+2025-01-05,Delhi_Gurgaon,Women_Footwear,SKU023,Flat Sandals - Tan,Clarks,156,156000,14.2,0,0,12,198,9,Professional,4.4
+2025-01-05,Delhi_Gurgaon,Men_Casual,SKU024,Joggers - Grey,Nike,267,400500,14.2,0,0,21,334,6,Young_Professional,4.6
+2025-01-05,Delhi_Gurgaon,Accessories,SKU025,Sunglasses - Aviator,Ray-Ban,134,670000,14.2,0,0,11,167,8,Premium,4.7
+2025-01-05,Bangalore_Whitefield,Women_Ethnic,SKU021,Lehenga Choli - Bridal,Sabyasachi,19,1900000,27.1,0,0,2,28,13,Luxury,4.9
+2025-01-05,Bangalore_Whitefield,Women_Western,SKU022,Jumpsuit - Navy,Zara,112,224000,27.1,0,0,9,145,9,Premium,4.5
+2025-01-05,Bangalore_Whitefield,Women_Footwear,SKU023,Flat Sandals - Tan,Clarks,189,189000,27.1,0,0,15,234,8,Professional,4.4
+2025-01-05,Bangalore_Whitefield,Men_Casual,SKU024,Joggers - Grey,Nike,198,297000,27.1,0,0,16,245,7,Young_Professional,4.6
+2025-01-05,Bangalore_Whitefield,Accessories,SKU025,Sunglasses - Aviator,Ray-Ban,98,490000,27.1,0,0,8,123,10,Premium,4.7
+2025-01-06,Mumbai_Central,Women_Ethnic,SKU026,Bandhani Dupatta,Anouk,289,144500,29.5,0,0,23,356,5,Value,4.1
+2025-01-06,Mumbai_Central,Women_Western,SKU027,Midi Skirt - Floral,Mango,134,201000,29.5,0,0,11,167,10,Premium,4.4
+2025-01-06,Mumbai_Central,Women_Footwear,SKU028,Loafers - Black,Aldo,112,280000,29.5,0,0,9,145,9,Professional,4.5
+2025-01-06,Mumbai_Central,Men_Casual,SKU029,Shorts - Denim,Levi's,267,266900,29.5,0,0,21,334,6,Young_Professional,4.3
+2025-01-06,Mumbai_Central,Accessories,SKU030,Silk Scarf,Satya Paul,78,156000,29.5,0,0,6,98,10,Premium,4.6
+2025-01-06,Delhi_Gurgaon,Women_Ethnic,SKU026,Bandhani Dupatta,Anouk,334,167000,13.5,0,0,27,412,4,Value,4.1
+2025-01-06,Delhi_Gurgaon,Women_Western,SKU027,Midi Skirt - Floral,Mango,112,168000,13.5,0,0,9,145,11,Premium,4.4
+2025-01-06,Delhi_Gurgaon,Women_Footwear,SKU028,Loafers - Black,Aldo,134,335000,13.5,0,0,11,167,8,Professional,4.5
+2025-01-06,Delhi_Gurgaon,Men_Casual,SKU029,Shorts - Denim,Levi's,234,233700,13.5,0,0,19,289,7,Young_Professional,4.3
+2025-01-06,Delhi_Gurgaon,Accessories,SKU030,Silk Scarf,Satya Paul,89,178000,13.5,0,0,7,112,9,Premium,4.6
+2025-01-06,Bangalore_Whitefield,Women_Ethnic,SKU026,Bandhani Dupatta,Anouk,256,128000,26.9,0,0,20,312,6,Value,4.1
+2025-01-06,Bangalore_Whitefield,Women_Western,SKU027,Midi Skirt - Floral,Mango,145,217500,26.9,0,0,12,178,9,Premium,4.4
+2025-01-06,Bangalore_Whitefield,Women_Footwear,SKU028,Loafers - Black,Aldo,98,245000,26.9,0,0,8,123,10,Professional,4.5
+2025-01-06,Bangalore_Whitefield,Men_Casual,SKU029,Shorts - Denim,Levi's,289,288700,26.9,0,0,23,356,5,Young_Professional,4.3
+2025-01-06,Bangalore_Whitefield,Accessories,SKU030,Silk Scarf,Satya Paul,67,134000,26.9,0,0,5,89,11,Premium,4.6
+2025-01-07,Mumbai_Central,Women_Ethnic,SKU031,Ikat Print Kurti,Global Desi,198,198000,28.9,0,0,16,245,8,Mass_Premium,4.3
+2025-01-07,Mumbai_Central,Women_Western,SKU032,Bodycon Dress,Boohoo,223,223000,28.9,0,0,18,278,6,Young_Professional,4.1
+2025-01-07,Mumbai_Central,Women_Footwear,SKU033,Platform Sneakers,Skechers,167,250500,28.9,0,0,13,212,9,Mass_Premium,4.4
+2025-01-07,Mumbai_Central,Men_Casual,SKU034,Henley T-Shirt,Jack & Jones,289,231200,28.9,0,0,23,356,5,Young_Professional,4.2
+2025-01-07,Mumbai_Central,Accessories,SKU035,Leather Belt,Tommy Hilfiger,145,290000,28.9,0,0,12,178,10,Premium,4.5
+2025-01-07,Delhi_Gurgaon,Women_Ethnic,SKU031,Ikat Print Kurti,Global Desi,234,234000,12.8,0,0,19,289,7,Mass_Premium,4.3
+2025-01-07,Delhi_Gurgaon,Women_Western,SKU032,Bodycon Dress,Boohoo,189,189000,12.8,0,0,15,234,8,Young_Professional,4.1
+2025-01-07,Delhi_Gurgaon,Women_Footwear,SKU033,Platform Sneakers,Skechers,145,217500,12.8,0,0,12,178,10,Mass_Premium,4.4
+2025-01-07,Delhi_Gurgaon,Men_Casual,SKU034,Henley T-Shirt,Jack & Jones,312,249600,12.8,0,0,25,389,4,Young_Professional,4.2
+2025-01-07,Delhi_Gurgaon,Accessories,SKU035,Leather Belt,Tommy Hilfiger,167,334000,12.8,0,0,13,212,8,Premium,4.5
+2025-01-07,Bangalore_Whitefield,Women_Ethnic,SKU031,Ikat Print Kurti,Global Desi,178,178000,27.3,0,0,14,223,9,Mass_Premium,4.3
+2025-01-07,Bangalore_Whitefield,Women_Western,SKU032,Bodycon Dress,Boohoo,256,256000,27.3,0,0,20,312,5,Young_Professional,4.1
+2025-01-07,Bangalore_Whitefield,Women_Footwear,SKU033,Platform Sneakers,Skechers,189,283500,27.3,0,0,15,234,8,Mass_Premium,4.4
+2025-01-07,Bangalore_Whitefield,Men_Casual,SKU034,Henley T-Shirt,Jack & Jones,267,213600,27.3,0,0,21,334,6,Young_Professional,4.2
+2025-01-07,Bangalore_Whitefield,Accessories,SKU035,Leather Belt,Tommy Hilfiger,123,246000,27.3,0,0,10,156,11,Premium,4.5
+2025-01-08,Mumbai_Central,Women_Ethnic,SKU036,Chanderi Silk Suit,Nalli,89,445000,29.2,0,0,7,112,10,Luxury,4.8
+2025-01-08,Mumbai_Central,Women_Western,SKU037,Trench Coat - Beige,Marks & Spencer,45,225000,29.2,0,0,4,67,12,Premium,4.6
+2025-01-08,Mumbai_Central,Women_Footwear,SKU038,Wedge Sandals,Catwalk,234,234000,29.2,0,0,19,289,6,Mass_Premium,4.2
+2025-01-08,Mumbai_Central,Men_Casual,SKU039,Bomber Jacket,Pepe Jeans,78,312000,29.2,0,0,6,102,11,Young_Professional,4.5
+2025-01-08,Mumbai_Central,Accessories,SKU040,Diamond Studs,Tanishq,34,850000,29.2,0,0,3,45,13,Luxury,4.9
+2025-01-08,Delhi_Gurgaon,Women_Ethnic,SKU036,Chanderi Silk Suit,Nalli,112,560000,11.5,0,0,9,145,9,Luxury,4.8
+2025-01-08,Delhi_Gurgaon,Women_Western,SKU037,Trench Coat - Beige,Marks & Spencer,67,335000,11.5,0,0,5,89,10,Premium,4.6
+2025-01-08,Delhi_Gurgaon,Women_Footwear,SKU038,Wedge Sandals,Catwalk,198,198000,11.5,0,0,16,245,7,Mass_Premium,4.2
+2025-01-08,Delhi_Gurgaon,Men_Casual,SKU039,Bomber Jacket,Pepe Jeans,98,392000,11.5,0,0,8,123,9,Young_Professional,4.5
+2025-01-08,Delhi_Gurgaon,Accessories,SKU040,Diamond Studs,Tanishq,45,1125000,11.5,0,0,4,56,11,Luxury,4.9
+2025-01-08,Bangalore_Whitefield,Women_Ethnic,SKU036,Chanderi Silk Suit,Nalli,78,390000,26.7,0,0,6,98,11,Luxury,4.8
+2025-01-08,Bangalore_Whitefield,Women_Western,SKU037,Trench Coat - Beige,Marks & Spencer,56,280000,26.7,0,0,4,78,12,Premium,4.6
+2025-01-08,Bangalore_Whitefield,Women_Footwear,SKU038,Wedge Sandals,Catwalk,267,267000,26.7,0,0,21,334,5,Mass_Premium,4.2
+2025-01-08,Bangalore_Whitefield,Men_Casual,SKU039,Bomber Jacket,Pepe Jeans,67,268000,26.7,0,0,5,89,11,Young_Professional,4.5
+2025-01-08,Bangalore_Whitefield,Accessories,SKU040,Diamond Studs,Tanishq,28,700000,26.7,0,0,2,38,14,Luxury,4.9
+2025-01-09,Mumbai_Central,Women_Ethnic,SKU041,Phulkari Dupatta,FabAlley,312,156000,28.4,0,0,25,389,4,Value,4.0
+2025-01-09,Mumbai_Central,Women_Western,SKU042,Pleated Pants - Black,Mango,156,312000,28.4,0,0,12,198,9,Premium,4.5
+2025-01-09,Mumbai_Central,Women_Footwear,SKU043,Ankle Boots,Dune,89,356000,28.4,0,0,7,112,10,Premium,4.6
+2025-01-09,Mumbai_Central,Men_Casual,SKU044,Sweatshirt - Logo,Adidas,234,351000,28.4,0,0,19,289,6,Young_Professional,4.4
+2025-01-09,Mumbai_Central,Accessories,SKU045,Pearl Necklace,Zaveri Pearls,145,362500,28.4,0,0,12,178,8,Premium,4.7
+2025-01-09,Delhi_Gurgaon,Women_Ethnic,SKU041,Phulkari Dupatta,FabAlley,378,189000,10.2,0,0,30,456,3,Value,4.0
+2025-01-09,Delhi_Gurgaon,Women_Western,SKU042,Pleated Pants - Black,Mango,134,268000,10.2,0,0,11,167,10,Premium,4.5
+2025-01-09,Delhi_Gurgaon,Women_Footwear,SKU043,Ankle Boots,Dune,112,448000,10.2,0,0,9,145,8,Premium,4.6
+2025-01-09,Delhi_Gurgaon,Men_Casual,SKU044,Sweatshirt - Logo,Adidas,289,433500,10.2,0,0,23,356,5,Young_Professional,4.4
+2025-01-09,Delhi_Gurgaon,Accessories,SKU045,Pearl Necklace,Zaveri Pearls,167,417500,10.2,0,0,13,212,7,Premium,4.7
+2025-01-09,Bangalore_Whitefield,Women_Ethnic,SKU041,Phulkari Dupatta,FabAlley,267,133500,27.5,0,0,21,334,5,Value,4.0
+2025-01-09,Bangalore_Whitefield,Women_Western,SKU042,Pleated Pants - Black,Mango,178,356000,27.5,0,0,14,223,8,Premium,4.5
+2025-01-09,Bangalore_Whitefield,Women_Footwear,SKU043,Ankle Boots,Dune,78,312000,27.5,0,0,6,102,11,Premium,4.6
+2025-01-09,Bangalore_Whitefield,Men_Casual,SKU044,Sweatshirt - Logo,Adidas,198,297000,27.5,0,0,16,245,7,Young_Professional,4.4
+2025-01-09,Bangalore_Whitefield,Accessories,SKU045,Pearl Necklace,Zaveri Pearls,123,307500,27.5,0,0,10,156,10,Premium,4.7
+2025-01-10,Mumbai_Central,Women_Ethnic,SKU046,Patola Saree,Kalki,34,680000,28.1,1,0,3,45,12,Luxury,4.8
+2025-01-10,Mumbai_Central,Women_Western,SKU047,Sequin Top,Zara,189,283500,28.1,1,0,15,234,7,Premium,4.3
+2025-01-10,Mumbai_Central,Women_Footwear,SKU048,Glitter Heels,Jimmy Choo,23,690000,28.1,1,0,2,34,14,Luxury,4.9
+2025-01-10,Mumbai_Central,Men_Casual,SKU049,Kurta Pajama Set,Manyavar,267,400500,28.1,1,0,21,334,5,Premium,4.6
+2025-01-10,Mumbai_Central,Accessories,SKU050,Clutch - Gold,Michael Kors,78,390000,28.1,1,0,6,102,10,Premium,4.7
+2025-01-10,Delhi_Gurgaon,Women_Ethnic,SKU046,Patola Saree,Kalki,56,1120000,9.8,1,0,4,67,10,Luxury,4.8
+2025-01-10,Delhi_Gurgaon,Women_Western,SKU047,Sequin Top,Zara,156,234000,9.8,1,0,12,198,9,Premium,4.3
+2025-01-10,Delhi_Gurgaon,Women_Footwear,SKU048,Glitter Heels,Jimmy Choo,34,1020000,9.8,1,0,3,45,12,Luxury,4.9
+2025-01-10,Delhi_Gurgaon,Men_Casual,SKU049,Kurta Pajama Set,Manyavar,334,501000,9.8,1,0,27,412,4,Premium,4.6
+2025-01-10,Delhi_Gurgaon,Accessories,SKU050,Clutch - Gold,Michael Kors,98,490000,9.8,1,0,8,123,8,Premium,4.7
+2025-01-10,Bangalore_Whitefield,Women_Ethnic,SKU046,Patola Saree,Kalki,28,560000,26.2,1,0,2,38,13,Luxury,4.8
+2025-01-10,Bangalore_Whitefield,Women_Western,SKU047,Sequin Top,Zara,212,318000,26.2,1,0,17,267,7,Premium,4.3
+2025-01-10,Bangalore_Whitefield,Women_Footwear,SKU048,Glitter Heels,Jimmy Choo,19,570000,26.2,1,0,2,28,15,Luxury,4.9
+2025-01-10,Bangalore_Whitefield,Men_Casual,SKU049,Kurta Pajama Set,Manyavar,223,334500,26.2,1,0,18,278,6,Premium,4.6
+2025-01-10,Bangalore_Whitefield,Accessories,SKU050,Clutch - Gold,Michael Kors,67,335000,26.2,1,0,5,89,11,Premium,4.7
+2025-01-11,Mumbai_Central,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,312,2184000,28.7,1,0,25,389,3,Premium,4.6
+2025-01-11,Mumbai_Central,Women_Western,SKU002,Floral Maxi Dress,ONLY,178,267000,28.7,1,0,14,223,8,Young_Professional,4.3
+2025-01-11,Mumbai_Central,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,134,536000,28.7,1,0,11,167,9,Premium,4.5
+2025-01-11,Mumbai_Central,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,198,396000,28.7,1,0,16,245,7,Professional,4.4
+2025-01-11,Mumbai_Central,Accessories,SKU005,Leather Tote Bag,Hidesign,89,445000,28.7,1,0,7,112,10,Premium,4.7
+2025-01-11,Delhi_Gurgaon,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,389,2723000,8.5,1,0,31,456,2,Premium,4.6
+2025-01-11,Delhi_Gurgaon,Women_Western,SKU002,Floral Maxi Dress,ONLY,145,217500,8.5,1,0,12,178,9,Young_Professional,4.3
+2025-01-11,Delhi_Gurgaon,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,156,624000,8.5,1,0,12,198,8,Premium,4.5
+2025-01-11,Delhi_Gurgaon,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,234,468000,8.5,1,0,19,289,6,Professional,4.4
+2025-01-11,Delhi_Gurgaon,Accessories,SKU005,Leather Tote Bag,Hidesign,112,560000,8.5,1,0,9,145,8,Premium,4.7
+2025-01-11,Bangalore_Whitefield,Women_Ethnic,SKU001,Silk Saree - Banarasi,Fabindia,267,1869000,25.8,1,0,21,334,4,Premium,4.6
+2025-01-11,Bangalore_Whitefield,Women_Western,SKU002,Floral Maxi Dress,ONLY,198,297000,25.8,1,0,16,245,7,Young_Professional,4.3
+2025-01-11,Bangalore_Whitefield,Women_Footwear,SKU003,Block Heels - Nude,Steve Madden,112,448000,25.8,1,0,9,145,10,Premium,4.5
+2025-01-11,Bangalore_Whitefield,Men_Casual,SKU004,Slim Fit Chinos - Navy,Arrow,167,334000,25.8,1,0,13,212,9,Professional,4.4
+2025-01-11,Bangalore_Whitefield,Accessories,SKU005,Leather Tote Bag,Hidesign,78,390000,25.8,1,0,6,102,11,Premium,4.7
+2025-01-12,Mumbai_Central,Women_Ethnic,SKU006,Anarkali Kurta Set,W,423,634500,28.3,1,0,34,512,2,Mass_Premium,4.2
+2025-01-12,Mumbai_Central,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,112,336000,28.3,1,0,9,145,10,Professional,4.4
+2025-01-12,Mumbai_Central,Women_Footwear,SKU008,White Sneakers,Puma,289,433500,28.3,1,0,23,356,4,Young_Professional,4.5
+2025-01-12,Mumbai_Central,Men_Casual,SKU009,Printed T-Shirt,Roadster,467,280200,28.3,1,0,37,534,1,Value,4.1
+2025-01-12,Mumbai_Central,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,234,117000,28.3,1,0,19,289,6,Young_Professional,4.3
+2025-01-12,Delhi_Gurgaon,Women_Ethnic,SKU006,Anarkali Kurta Set,W,512,768000,7.2,1,0,41,623,1,Mass_Premium,4.2
+2025-01-12,Delhi_Gurgaon,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,98,294000,7.2,1,0,8,123,11,Professional,4.4
+2025-01-12,Delhi_Gurgaon,Women_Footwear,SKU008,White Sneakers,Puma,245,367500,7.2,1,0,20,312,5,Young_Professional,4.5
+2025-01-12,Delhi_Gurgaon,Men_Casual,SKU009,Printed T-Shirt,Roadster,534,320400,7.2,1,0,43,645,0,Value,4.1
+2025-01-12,Delhi_Gurgaon,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,278,139000,7.2,1,0,22,345,5,Young_Professional,4.3
+2025-01-12,Bangalore_Whitefield,Women_Ethnic,SKU006,Anarkali Kurta Set,W,378,567000,25.4,1,0,30,456,3,Mass_Premium,4.2
+2025-01-12,Bangalore_Whitefield,Women_Western,SKU007,Blazer - Black Formal,Vero Moda,134,402000,25.4,1,0,11,167,9,Professional,4.4
+2025-01-12,Bangalore_Whitefield,Women_Footwear,SKU008,White Sneakers,Puma,312,468000,25.4,1,0,25,389,4,Young_Professional,4.5
+2025-01-12,Bangalore_Whitefield,Men_Casual,SKU009,Printed T-Shirt,Roadster,423,253800,25.4,1,0,34,512,2,Value,4.1
+2025-01-12,Bangalore_Whitefield,Accessories,SKU010,Silver Oxidized Earrings,Pipa Bella,198,99000,25.4,1,0,16,245,7,Young_Professional,4.3
+2025-01-13,Mumbai_Central,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,289,289000,28.9,0,0,23,356,5,Mass_Premium,4.3
+2025-01-13,Mumbai_Central,Women_Western,SKU012,Denim Jacket,H&M,178,267000,28.9,0,0,14,223,8,Young_Professional,4.2
+2025-01-13,Mumbai_Central,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,345,172500,28.9,0,0,28,423,4,Value,4.4
+2025-01-13,Mumbai_Central,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,234,351000,28.9,0,0,19,289,6,Professional,4.5
+2025-01-13,Mumbai_Central,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,112,336000,28.9,0,0,9,145,9,Professional,4.6
+2025-01-13,Delhi_Gurgaon,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,334,334000,6.8,0,0,27,412,4,Mass_Premium,4.3
+2025-01-13,Delhi_Gurgaon,Women_Western,SKU012,Denim Jacket,H&M,156,234000,6.8,0,0,12,198,9,Young_Professional,4.2
+2025-01-13,Delhi_Gurgaon,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,289,144500,6.8,0,0,23,356,5,Value,4.4
+2025-01-13,Delhi_Gurgaon,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,267,400500,6.8,0,0,21,334,5,Professional,4.5
+2025-01-13,Delhi_Gurgaon,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,134,402000,6.8,0,0,11,167,8,Professional,4.6
+2025-01-13,Bangalore_Whitefield,Women_Ethnic,SKU011,Cotton Palazzo Set,Biba,256,256000,26.1,0,0,20,312,6,Mass_Premium,4.3
+2025-01-13,Bangalore_Whitefield,Women_Western,SKU012,Denim Jacket,H&M,198,297000,26.1,0,0,16,245,7,Young_Professional,4.2
+2025-01-13,Bangalore_Whitefield,Women_Footwear,SKU013,Kolhapuri Chappal,Metro,378,189000,26.1,0,0,30,456,3,Value,4.4
+2025-01-13,Bangalore_Whitefield,Men_Casual,SKU014,Polo T-Shirt - White,US Polo,198,297000,26.1,0,0,16,245,7,Professional,4.5
+2025-01-13,Bangalore_Whitefield,Accessories,SKU015,Laptop Bag - Premium,Wildcraft,98,294000,26.1,0,0,8,123,10,Professional,4.6
+2025-01-14,Mumbai_Central,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,198,396000,29.1,0,0,16,245,7,Premium,4.5
+2025-01-14,Mumbai_Central,Women_Western,SKU017,Crop Top - Printed,Forever 21,334,167000,29.1,0,0,27,412,4,Young_Professional,4.0
+2025-01-14,Mumbai_Central,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,89,356000,29.1,0,0,7,112,10,Premium,4.6
+2025-01-14,Mumbai_Central,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,234,351000,29.1,0,0,19,289,6,Professional,4.4
+2025-01-14,Mumbai_Central,Accessories,SKU020,Smart Watch Strap,Boat,423,211500,29.1,0,0,34,512,3,Young_Professional,4.2
+2025-01-14,Delhi_Gurgaon,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,234,468000,5.5,0,0,19,289,6,Premium,4.5
+2025-01-14,Delhi_Gurgaon,Women_Western,SKU017,Crop Top - Printed,Forever 21,289,144500,5.5,0,0,23,356,5,Young_Professional,4.0
+2025-01-14,Delhi_Gurgaon,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,112,448000,5.5,0,0,9,145,9,Premium,4.6
+2025-01-14,Delhi_Gurgaon,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,289,433500,5.5,0,0,23,356,4,Professional,4.4
+2025-01-14,Delhi_Gurgaon,Accessories,SKU020,Smart Watch Strap,Boat,378,189000,5.5,0,0,30,456,3,Young_Professional,4.2
+2025-01-14,Bangalore_Whitefield,Women_Ethnic,SKU016,Georgette Sharara Set,Aurelia,178,356000,26.8,0,0,14,223,8,Premium,4.5
+2025-01-14,Bangalore_Whitefield,Women_Western,SKU017,Crop Top - Printed,Forever 21,378,189000,26.8,0,0,30,456,3,Young_Professional,4.0
+2025-01-14,Bangalore_Whitefield,Women_Footwear,SKU018,Stilettos - Red,Charles & Keith,98,392000,26.8,0,0,8,123,10,Premium,4.6
+2025-01-14,Bangalore_Whitefield,Men_Casual,SKU019,Casual Shirt - Checks,Van Heusen,212,318000,26.8,0,0,17,267,7,Professional,4.4
+2025-01-14,Bangalore_Whitefield,Accessories,SKU020,Smart Watch Strap,Boat,456,228000,26.8,0,0,36,534,2,Young_Professional,4.2
+2025-01-15,Mumbai_Central,Women_Ethnic,SKU021,Lehenga Choli - Bridal,Sabyasachi,45,4500000,28.5,0,1,4,56,10,Luxury,4.9
+2025-01-15,Mumbai_Central,Women_Western,SKU022,Jumpsuit - Navy,Zara,145,290000,28.5,0,1,12,178,9,Premium,4.5
+2025-01-15,Mumbai_Central,Women_Footwear,SKU023,Flat Sandals - Tan,Clarks,267,267000,28.5,0,1,21,334,5,Professional,4.4
+2025-01-15,Mumbai_Central,Men_Casual,SKU024,Joggers - Grey,Nike,334,501000,28.5,0,1,27,412,3,Young_Professional,4.6
+2025-01-15,Mumbai_Central,Accessories,SKU025,Sunglasses - Aviator,Ray-Ban,178,890000,28.5,0,1,14,223,7,Premium,4.7

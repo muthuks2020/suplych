@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Demand Forecasting Agent - ShellKode AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/shared-agent.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="shellkode.png" alt="ShellKode" class="logo-img">
+            <span class="agent-title">Fashion Demand Forecasting Agent</span>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="integrated-workflow.html" class="nav-btn"><i class="fas fa-project-diagram"></i> Multi-Agent</a>
+            <div class="ai-status">
+                <div class="ai-pulse"></div>
+                <span>AI Agent Ready</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="agent-hero">
+            <div class="agent-icon-large"><i class="fas fa-chart-line"></i></div>
+            <div class="agent-details">
+                <h1>Fashion Demand Forecasting Agent</h1>
+                <p>AI-powered demand prediction for 2M+ fashion SKUs using trend analysis, seasonality patterns, festival calendars, and regional preferences. Upload your data to see the AI in action.</p>
+                <span class="badge active"><i class="fas fa-circle"></i> Ready to Process</span>
+                <span class="badge accuracy"><i class="fas fa-bullseye"></i> 96.8% Target Accuracy</span>
+            </div>
+        </div>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="upload-title">Upload Fashion Sales Data</h2>
+            <p class="upload-desc">Drop your CSV file to activate AI-powered demand forecasting</p>
+            <input type="file" class="file-input" id="csvFile" accept=".csv">
+            <label for="csvFile" class="file-input-label"><i class="fas fa-file-csv"></i> Select CSV File</label>
+            <button class="process-btn" id="processBtn"><i class="fas fa-brain"></i> Run AI Analysis</button>
+        </div>
+
+        <div class="processing-section" id="processingSection">
+            <div class="processing-header">
+                <h2 class="processing-title"><i class="fas fa-cogs"></i> AI Processing Pipeline</h2>
+                <div class="processing-status"><div class="status-spinner"></div><span>Processing...</span></div>
+            </div>
+            <div class="pipeline-container">
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-database"></i></div><span class="step-label">Data Ingestion</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-cog"></i></div><span class="step-label">Feature Engineering</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-calendar-alt"></i></div><span class="step-label">Seasonality</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-fire"></i></div><span class="step-label">Trend Detection</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-brain"></i></div><span class="step-label">Model Training</span></div>
+                <div class="step-connector"><div class="progress-fill"></div></div>
+                <div class="pipeline-step"><div class="step-icon"><i class="fas fa-chart-line"></i></div><span class="step-label">Forecast</span></div>
+            </div>
+            <div class="live-log" id="liveLog"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="metrics-grid">
+                <div class="metric-card"><div class="metric-value" id="metricAccuracy">--</div><div class="metric-label">Forecast Accuracy</div><div class="metric-change">↑ 23% vs manual</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricHorizon">--</div><div class="metric-label">Forecast Horizon</div><div class="metric-change">Rolling updates</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricCategories">--</div><div class="metric-label">Categories Analyzed</div><div class="metric-change">50+ SKUs</div></div>
+                <div class="metric-card"><div class="metric-value" id="metricRevenue">--</div><div class="metric-label">Revenue Protected</div><div class="metric-change">From stockout prevention</div></div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card"><h3><i class="fas fa-chart-area"></i> Demand Forecast by Category</h3><div class="chart-container"><canvas id="forecastChart"></canvas></div></div>
+                <div class="chart-card"><h3><i class="fas fa-fire"></i> Trending Categories</h3><div class="chart-container"><canvas id="trendChart"></canvas></div></div>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-arrow-up"></i></div><div class="insight-title">Wedding Season Impact</div></div><div class="insight-value">+67%</div><div class="insight-desc">Ethnic wear demand surge predicted for Feb-Mar wedding season</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-sun"></i></div><div class="insight-title">Summer Collection</div></div><div class="insight-value">+45%</div><div class="insight-desc">Light fabrics and western wear trending as temperatures rise</div></div>
+                <div class="insight-card"><div class="insight-header"><div class="insight-icon"><i class="fas fa-map-marker-alt"></i></div><div class="insight-title">Regional Preference</div></div><div class="insight-value">Delhi +34%</div><div class="insight-desc">North India showing higher demand for premium ethnic wear</div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/shared-agent.js"></script>
+    <script src="js/demand-forecasting-agent.js"></script>
+</body>
+</html>
